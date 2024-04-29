@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="hero">
+        <div class="container">
+            <div class="clock">
+                <span id="hrs">00</span>
+                <span>:</span>
+                <span id="mints">00</span>
+                <span>:</span>
+                <span id="sec">00</span>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    let hrsElement = document.getElementById("hrs");
+        let mintsElement = document.getElementById("mints");
+        let secElement = document.getElementById("sec");
+
+        function updateTime() {
+            let date = new Date();
+            let hrs = date.getHours();
+            let mints = date.getMinutes();
+            let sec = date.getSeconds();
+            let ampm = hrs >= 12 ? 'PM' : 'AM';
+            hrs = hrs % 12;
+            hrs = hrs ? hrs : 12; // the hour '0' should be '12'
+
+            hrsElement.innerHTML = hrs < 10 ? "0" + hrs : hrs;
+            mintsElement.innerHTML = mints < 10 ? "0" + mints : mints;
+            secElement.innerHTML = sec < 10 ? "0" + sec : sec;
+            ampmElement.innerHTML = ampm;
+        }
+
+        setInterval(updateTime, 1000);
+
+
+</script>
+</html>
